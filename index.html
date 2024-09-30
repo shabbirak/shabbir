@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Force Calculator (F = ma)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Force Calculator (F = ma)</h1>
+        <form action="/calculate" method="post">
+            <label for="mass">Mass (kg):</label>
+            <input type="text" id="mass" name="mass" required>
+            
+            <label for="acceleration">Acceleration (m/s²):</label>
+            <input type="text" id="acceleration" name="acceleration" required>
+            
+            <button type="submit">Calculate Force</button>
+        </form>
+
+        {% if force %}
+            <p>Force: {{ force }} N</p>
+        {% elif error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
